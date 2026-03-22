@@ -3,13 +3,11 @@ import { Header } from '@/components/Header'
 import { Hero } from '@/components/Hero'
 import { Services } from '@/components/Services'
 import { Advantages } from '@/components/Advantages'
-import { Calculator } from '@/components/Calculator'
 import { Portfolio } from '@/components/Portfolio'
 import { HowWeWork } from '@/components/HowWeWork'
 import { Promo } from '@/components/Promo'
 import { Reviews } from '@/components/Reviews'
 import { Partners } from '@/components/Partners'
-import { About } from '@/components/About'
 import { Contacts } from '@/components/Contacts'
 import { Footer } from '@/components/Footer'
 import { MobileBottomBar } from '@/components/MobileBottomBar'
@@ -34,13 +32,11 @@ function App() {
         <Hero />
         <Services />
         <Advantages />
-        <Calculator />
         <Portfolio />
         <HowWeWork />
         <Promo />
         <Reviews />
         <Partners />
-        <About />
         <Contacts onPrivacyClick={() => openPrivacy('personal-data')} />
       </main>
       <Footer onPrivacyClick={openPrivacy} />

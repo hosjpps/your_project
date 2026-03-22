@@ -10,7 +10,7 @@ interface ContactsProps {
 }
 
 export function Contacts({ onPrivacyClick }: ContactsProps) {
-  const [formData, setFormData] = useState({ name: '', phone: '', comment: '' })
+  const [formData, setFormData] = useState({ name: '', phone: '', email: '', comment: '' })
   const [submitted, setSubmitted] = useState(false)
   const { ref, isInView } = useInView(0.1)
 
@@ -99,7 +99,7 @@ export function Contacts({ onPrivacyClick }: ContactsProps) {
                   Заявка отправлена!
                 </h3>
                 <p className="text-text-secondary">
-                  Мы перезвоним вам в течение 15 минут
+                  Мы свяжемся с вами в ближайшее время
                 </p>
               </div>
             ) : (
@@ -107,9 +107,6 @@ export function Contacts({ onPrivacyClick }: ContactsProps) {
                 <h3 className="text-lg font-bold text-text-primary mb-1">
                   Оставить заявку
                 </h3>
-                <p className="text-sm text-text-secondary mb-4">
-                  Перезвоним в течение 15 минут
-                </p>
                 <input
                   name="name"
                   type="text"
@@ -126,6 +123,14 @@ export function Contacts({ onPrivacyClick }: ContactsProps) {
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder="+7 (___) ___-__-__"
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-text-primary placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors"
+                />
+                <input
+                  name="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Ваш email"
                   className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-text-primary placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors"
                 />
                 <textarea
