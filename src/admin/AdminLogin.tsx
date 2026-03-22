@@ -42,12 +42,13 @@ export function AdminLogin() {
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-text-secondary mb-1.5">Email</label>
+            <label className="block text-sm font-medium text-text-secondary mb-1.5">Логин</label>
             <input
-              type="email"
+              type="text"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              placeholder="admin@svoyproekt.ru"
               className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-text-primary"
             />
           </div>
