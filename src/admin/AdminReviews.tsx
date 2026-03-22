@@ -165,23 +165,23 @@ export function AdminReviews() {
                 </div>
 
                 {/* Actions */}
-                <div className="flex flex-col gap-1 flex-shrink-0">
+                <div className="flex flex-col gap-2 flex-shrink-0">
                   {r.status !== 'approved' && (
                     <button
                       onClick={() => updateStatus(r.id, 'approved')}
-                      className="p-2 rounded-lg hover:bg-green-50 text-text-secondary hover:text-green-600 transition-colors cursor-pointer"
-                      title="Одобрить"
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-green-50 text-green-700 text-xs font-medium hover:bg-green-100 transition-colors cursor-pointer"
                     >
-                      <Icon name="check-circle" className="w-4 h-4" />
+                      <Icon name="check-circle" className="w-3.5 h-3.5" />
+                      Опубликовать
                     </button>
                   )}
                   {r.status !== 'rejected' && (
                     <button
                       onClick={() => updateStatus(r.id, 'rejected')}
-                      className="p-2 rounded-lg hover:bg-red-50 text-text-secondary hover:text-red-500 transition-colors cursor-pointer"
-                      title="Отклонить"
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-50 text-red-600 text-xs font-medium hover:bg-red-100 transition-colors cursor-pointer"
                     >
-                      <Icon name="x-circle" className="w-4 h-4" />
+                      <Icon name="x-circle" className="w-3.5 h-3.5" />
+                      Отклонить
                     </button>
                   )}
                   <button
@@ -189,17 +189,17 @@ export function AdminReviews() {
                       setReplyingTo(r.id)
                       setReplyText(r.admin_reply ?? '')
                     }}
-                    className="p-2 rounded-lg hover:bg-blue-50 text-text-secondary hover:text-blue-600 transition-colors cursor-pointer"
-                    title="Ответить"
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-50 text-blue-600 text-xs font-medium hover:bg-blue-100 transition-colors cursor-pointer"
                   >
-                    <Icon name="reply" className="w-4 h-4" />
+                    <Icon name="reply" className="w-3.5 h-3.5" />
+                    Ответить
                   </button>
                   <button
                     onClick={() => remove(r.id)}
-                    className="p-2 rounded-lg hover:bg-red-50 text-text-secondary hover:text-red-500 transition-colors cursor-pointer"
-                    title="Удалить"
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-text-secondary text-xs font-medium hover:bg-red-50 hover:text-red-500 transition-colors cursor-pointer"
                   >
-                    <Icon name="trash-2" className="w-4 h-4" />
+                    <Icon name="trash-2" className="w-3.5 h-3.5" />
+                    Удалить
                   </button>
                 </div>
               </div>

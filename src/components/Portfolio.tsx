@@ -21,10 +21,13 @@ function getPublicUrl(path: string) {
   return supabase.storage.from(BUCKET).getPublicUrl(path).data.publicUrl
 }
 
+const VISIBLE_COUNT = 3
+
 export function Portfolio() {
   const { ref, isInView } = useInView(0.1)
   const [dbItems, setDbItems] = useState<PortfolioItem[]>([])
   const [loaded, setLoaded] = useState(false)
+  const [showAll, setShowAll] = useState(false)
 
   useEffect(() => {
     supabase
@@ -52,7 +55,7 @@ export function Portfolio() {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6"
         >
           {hasDbItems
-            ? dbItems.map((item, index) => (
+            ? (showAll ? dbItems : dbItems.slice(0, VISIBLE_COUNT)).map((item, index) => (
                 <div
                   key={item.id}
                   className={cn(
@@ -79,7 +82,7 @@ export function Portfolio() {
                   </div>
                 </div>
               ))
-            : staticItems.map((item, index) => (
+            : (showAll ? staticItems : staticItems.slice(0, VISIBLE_COUNT)).map((item, index) => (
                 <div
                   key={item.title}
                   className={cn(
@@ -102,6 +105,19 @@ export function Portfolio() {
                 </div>
               ))}
         </div>
+
+        {/* Show more button */}
+        {!showAll && (hasDbItems ? dbItems.length : staticItems.length) > VISIBLE_COUNT && (
+          <div className="text-center mt-8">
+            <button
+              onClick={() => setShowAll(true)}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-gray-200 bg-white text-sm font-semibold text-text-primary hover:border-primary/30 hover:shadow-md transition-all cursor-pointer"
+            >
+              Показать ещё
+              <Icon name="chevron-down" className="w-4 h-4" />
+            </button>
+          </div>
+        )}
       </div>
     </section>
   )
