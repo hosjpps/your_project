@@ -4,9 +4,35 @@ import { Icon } from '@/components/ui/Icon'
 import type { PortfolioItem } from '@/lib/types'
 
 const BUCKET = 'portfolio-images'
+const MAX_SIZE = 1200
+const QUALITY = 0.8
 
 function getPublicUrl(path: string) {
   return supabase.storage.from(BUCKET).getPublicUrl(path).data.publicUrl
+}
+
+function compressImage(file: File): Promise<Blob> {
+  return new Promise((resolve) => {
+    const img = new Image()
+    img.onload = () => {
+      let { width, height } = img
+      if (width > MAX_SIZE || height > MAX_SIZE) {
+        if (width > height) {
+          height = Math.round((height * MAX_SIZE) / width)
+          width = MAX_SIZE
+        } else {
+          width = Math.round((width * MAX_SIZE) / height)
+          height = MAX_SIZE
+        }
+      }
+      const canvas = document.createElement('canvas')
+      canvas.width = width
+      canvas.height = height
+      canvas.getContext('2d')!.drawImage(img, 0, 0, width, height)
+      canvas.toBlob((blob) => resolve(blob!), 'image/jpeg', QUALITY)
+    }
+    img.src = URL.createObjectURL(file)
+  })
 }
 
 export function AdminPortfolio() {
@@ -33,10 +59,12 @@ export function AdminPortfolio() {
     if (!file || !title.trim()) return
 
     setUploading(true)
-    const ext = file.name.split('.').pop()
-    const path = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`
+    const compressed = await compressImage(file)
+    const path = `${Date.now()}-${Math.random().toString(36).slice(2)}.jpg`
 
-    const { error: uploadError } = await supabase.storage.from(BUCKET).upload(path, file)
+    const { error: uploadError } = await supabase.storage.from(BUCKET).upload(path, compressed, {
+      contentType: 'image/jpeg',
+    })
     if (uploadError) {
       alert('Ошибка загрузки: ' + uploadError.message)
       setUploading(false)

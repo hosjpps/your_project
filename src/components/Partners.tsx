@@ -7,7 +7,6 @@ const partners = [
   { name: 'REHAU', description: 'Профильные системы', accent: 'group-hover:border-violet-400 group-hover:bg-violet-50' },
   { name: 'Ivaper', description: 'Оконные профили', accent: 'group-hover:border-blue-400 group-hover:bg-blue-50' },
   { name: 'Brusbox', description: 'ПВХ-системы', accent: 'group-hover:border-sky-400 group-hover:bg-sky-50' },
-  { name: 'Nordprof', description: 'Профильные системы', accent: 'group-hover:border-indigo-400 group-hover:bg-indigo-50' },
   { name: 'MACO', description: 'Фурнитура', accent: 'group-hover:border-red-400 group-hover:bg-red-50' },
   { name: 'Roto', description: 'Фурнитура', accent: 'group-hover:border-amber-400 group-hover:bg-amber-50' },
   { name: 'Alutech', description: 'Ворота и роллеты', accent: 'group-hover:border-teal-400 group-hover:bg-teal-50' },

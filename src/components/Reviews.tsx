@@ -130,7 +130,7 @@ export function Reviews() {
           <button
             onClick={prev}
             disabled={activeIndex === 0}
-            className="hidden md:flex absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-12 h-12 items-center justify-center rounded-full bg-white shadow-lg shadow-primary/10 border border-gray-100 text-text-secondary hover:text-primary hover:shadow-xl disabled:opacity-30 disabled:cursor-not-allowed transition-all cursor-pointer"
+            className="hidden lg:flex absolute -left-16 top-1/2 -translate-y-1/2 z-10 w-12 h-12 items-center justify-center rounded-full bg-white shadow-lg shadow-primary/10 border border-gray-100 text-text-secondary hover:text-primary hover:shadow-xl disabled:opacity-30 disabled:cursor-not-allowed transition-all cursor-pointer"
             aria-label="Предыдущий отзыв"
           >
             <Icon name="chevron-left" className="w-5 h-5" />
@@ -138,7 +138,7 @@ export function Reviews() {
           <button
             onClick={next}
             disabled={activeIndex >= totalSlides - 1}
-            className="hidden md:flex absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-12 h-12 items-center justify-center rounded-full bg-white shadow-lg shadow-primary/10 border border-gray-100 text-text-secondary hover:text-primary hover:shadow-xl disabled:opacity-30 disabled:cursor-not-allowed transition-all cursor-pointer"
+            className="hidden lg:flex absolute -right-16 top-1/2 -translate-y-1/2 z-10 w-12 h-12 items-center justify-center rounded-full bg-white shadow-lg shadow-primary/10 border border-gray-100 text-text-secondary hover:text-primary hover:shadow-xl disabled:opacity-30 disabled:cursor-not-allowed transition-all cursor-pointer"
             aria-label="Следующий отзыв"
           >
             <Icon name="chevron-right" className="w-5 h-5" />
