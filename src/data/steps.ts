@@ -28,7 +28,7 @@ export const steps: Step[] = [
     number: 4,
     icon: 'factory',
     title: 'Производство',
-    description: 'Изготовим на собственном производстве за 5-7 дней',
+    description: 'Изготовим на собственном производстве от 5 дней',
   },
   {
     number: 5,
