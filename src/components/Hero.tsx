@@ -25,7 +25,7 @@ export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* ── Base deep gradient ── */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0a1628] via-primary to-[#0d2847]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#142368] via-primary to-[#112060]" />
 
       {/* ── Subtle geometric dot-grid overlay ── */}
       <div
