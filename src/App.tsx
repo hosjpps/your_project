@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
 import { Header } from '@/components/Header'
 import { Hero } from '@/components/Hero'
 import { Services } from '@/components/Services'
@@ -13,10 +14,16 @@ import { Footer } from '@/components/Footer'
 import { MobileBottomBar } from '@/components/MobileBottomBar'
 import { PrivacyPolicy } from '@/components/PrivacyPolicy'
 import { CookieBanner } from '@/components/CookieBanner'
+import { AdminLogin } from '@/admin/AdminLogin'
+import { AdminLayout } from '@/admin/AdminLayout'
+import { AdminDashboard } from '@/admin/AdminDashboard'
+import { AdminSubmissions } from '@/admin/AdminSubmissions'
+import { AdminReviews } from '@/admin/AdminReviews'
+import { AdminPortfolio } from '@/admin/AdminPortfolio'
 
 type PrivacyTab = 'privacy' | 'personal-data' | 'cookies'
 
-function App() {
+function LandingPage() {
   const [privacyOpen, setPrivacyOpen] = useState(false)
   const [privacyTab, setPrivacyTab] = useState<PrivacyTab>('privacy')
 
@@ -48,6 +55,21 @@ function App() {
       />
       <CookieBanner onDetailsClick={() => openPrivacy('cookies')} />
     </div>
+  )
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/admin/login" element={<AdminLogin />} />
+      <Route path="/admin" element={<AdminLayout />}>
+        <Route index element={<AdminDashboard />} />
+        <Route path="submissions" element={<AdminSubmissions />} />
+        <Route path="reviews" element={<AdminReviews />} />
+        <Route path="portfolio" element={<AdminPortfolio />} />
+      </Route>
+    </Routes>
   )
 }
 

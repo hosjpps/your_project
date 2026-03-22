@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from 'react'
 import { cn } from '@/lib/utils'
 import { company } from '@/data/company'
+import { supabase } from '@/lib/supabase'
 import { Button } from '@/components/ui/Button'
 import { Icon } from '@/components/ui/Icon'
 import { useInView } from '@/hooks/useInView'
@@ -14,8 +15,14 @@ export function Contacts({ onPrivacyClick }: ContactsProps) {
   const [submitted, setSubmitted] = useState(false)
   const { ref, isInView } = useInView(0.1)
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
+    await supabase.from('contact_submissions').insert({
+      name: formData.name,
+      phone: formData.phone,
+      email: formData.email || null,
+      comment: formData.comment || null,
+    })
     setSubmitted(true)
   }
 
