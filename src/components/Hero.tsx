@@ -5,10 +5,9 @@ import { company } from '@/data/company'
 import { useMemo } from 'react'
 
 const stats = [
-  { value: '3 000+', label: 'установок', icon: 'check-circle', top: '12%', right: '8%' },
-  { value: '15+', label: 'лет опыта', icon: 'calendar', top: '34%', right: '2%' },
-  { value: '3 года', label: 'гарантия', icon: 'shield-check', top: '56%', right: '12%' },
-  { value: '0%', label: 'рассрочка', icon: 'wallet', top: '76%', right: '5%' },
+  { value: '15+', label: 'лет опыта', icon: 'calendar', top: '18%', right: '6%' },
+  { value: '3 года', label: 'гарантия', icon: 'shield-check', top: '45%', right: '10%' },
+  { value: '0%', label: 'рассрочка', icon: 'wallet', top: '70%', right: '4%' },
 ]
 
 export function Hero() {

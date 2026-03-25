@@ -9,6 +9,7 @@ const partners = [
   { name: 'Brusbox', description: 'ПВХ-системы', accent: 'group-hover:border-sky-400 group-hover:bg-sky-50' },
   { name: 'MACO', description: 'Фурнитура', accent: 'group-hover:border-red-400 group-hover:bg-red-50' },
   { name: 'Roto', description: 'Фурнитура', accent: 'group-hover:border-amber-400 group-hover:bg-amber-50' },
+  { name: 'Siegenia Titan', description: 'Фурнитура', accent: 'group-hover:border-emerald-400 group-hover:bg-emerald-50' },
   { name: 'Alutech', description: 'Ворота и роллеты', accent: 'group-hover:border-teal-400 group-hover:bg-teal-50' },
   { name: 'DoorHan', description: 'Ворота и двери', accent: 'group-hover:border-orange-400 group-hover:bg-orange-50' },
 ]

@@ -70,22 +70,14 @@ export function Header() {
               }}
               className="flex flex-col leading-tight"
             >
-              <span
+              <img
+                src="/photo_2026-03-25 20.55.05-Photoroom.png"
+                alt="Свой Проект"
                 className={cn(
-                  'text-lg md:text-xl font-bold tracking-wide transition-colors',
-                  scrolled ? 'text-primary' : 'text-white'
+                  'h-10 md:h-12 w-auto transition-all',
+                  scrolled ? '[filter:brightness(0)_invert(12%)_sepia(100%)_saturate(5000%)_hue-rotate(220deg)]' : ''
                 )}
-              >
-                СВОЙ ПРОЕКТ
-              </span>
-              <span
-                className={cn(
-                  'text-[10px] md:text-xs transition-colors',
-                  scrolled ? 'text-text-secondary' : 'text-white/70'
-                )}
-              >
-                Оконная компания с 2008 г.
-              </span>
+              />
             </a>
 
             {/* Desktop nav */}
@@ -175,7 +167,7 @@ export function Header() {
           )}
         >
           <div className="flex items-center justify-between p-4 border-b border-gray-100">
-            <span className="text-lg font-bold text-primary">СВОЙ ПРОЕКТ</span>
+            <img src="/photo_2026-03-25 20.55.05-Photoroom.png" alt="Свой Проект" className="h-10 w-auto [filter:brightness(0)_invert(12%)_sepia(100%)_saturate(5000%)_hue-rotate(220deg)]" />
             <button
               onClick={() => setMobileOpen(false)}
               className="p-2 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"

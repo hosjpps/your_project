@@ -168,15 +168,37 @@ export function Contacts({ onPrivacyClick }: ContactsProps) {
 
           {/* Map — 3 cols */}
           <div className="lg:col-span-3">
-            {/* Desktop: embedded map */}
-            <div className="hidden lg:block h-full min-h-[360px]">
+            {/* Desktop: embedded map + links */}
+            <div className="hidden lg:flex flex-col h-full min-h-[360px] gap-3">
               <iframe
                 src={company.yandexMapEmbed}
                 title="Карта — Свой Проект"
-                className="w-full h-full rounded-2xl border border-gray-200"
+                className="w-full flex-1 rounded-2xl border border-gray-200"
                 allowFullScreen
                 loading="lazy"
               />
+              <div className="grid grid-cols-2 gap-3">
+                <a
+                  href={company.yandexMapLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2.5 bg-white rounded-xl py-3 px-5 border border-gray-200 shadow-sm hover:shadow-md transition-all"
+                >
+                  <Icon name="map-pin" className="w-5 h-5 text-primary" />
+                  <span className="text-sm font-semibold text-text-primary">Яндекс.Карты</span>
+                  <Icon name="arrow-up-right" className="w-3.5 h-3.5 text-text-secondary" />
+                </a>
+                <a
+                  href={company.twoGisLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2.5 bg-white rounded-xl py-3 px-5 border border-gray-200 shadow-sm hover:shadow-md transition-all"
+                >
+                  <Icon name="map" className="w-5 h-5 text-primary" />
+                  <span className="text-sm font-semibold text-text-primary">2ГИС</span>
+                  <Icon name="arrow-up-right" className="w-3.5 h-3.5 text-text-secondary" />
+                </a>
+              </div>
             </div>
             {/* Mobile: two map buttons side by side */}
             <div className="lg:hidden grid grid-cols-2 gap-3">

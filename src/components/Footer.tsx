@@ -36,12 +36,7 @@ export function Footer({ onPrivacyClick }: FooterProps) {
               }}
               className="inline-block mb-4"
             >
-              <span className="text-xl font-bold text-white tracking-wide">
-                СВОЙ ПРОЕКТ
-              </span>
-              <span className="block text-xs text-white/50 mt-0.5">
-                Оконная компания с 2008 г.
-              </span>
+              <img src="/photo_2026-03-25 20.55.05-Photoroom.png" alt="Свой Проект" className="h-10 w-auto" />
             </a>
             <p className="text-white/50 text-sm leading-relaxed max-w-xs">
               Производство и установка пластиковых окон, дверей, балконного
@@ -117,9 +112,7 @@ export function Footer({ onPrivacyClick }: FooterProps) {
                 window.scrollTo({ top: 0, behavior: 'smooth' })
               }}
             >
-              <span className="text-lg font-bold text-white tracking-wide">
-                СВОЙ ПРОЕКТ
-              </span>
+              <img src="/photo_2026-03-25 20.55.05-Photoroom.png" alt="Свой Проект" className="h-8 w-auto" />
             </a>
           </div>
 

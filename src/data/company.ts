@@ -18,7 +18,6 @@ export const company = {
     sunday: 'выходной',
   },
   stats: {
-    installations: '3000+',
     yearsExperience: '15+',
   },
   yandexMapEmbed:
