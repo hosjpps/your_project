@@ -129,14 +129,17 @@ export function Hero() {
               <Icon name="calculator" className="w-5 h-5 mr-2" />
               Рассчитать стоимость
             </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              onClick={() => (window.location.href = `tel:${primaryPhone.raw}`)}
-            >
-              <Icon name="phone" className="w-5 h-5 mr-2" />
-              Позвонить
-            </Button>
+            <a href={`tel:${primaryPhone.raw}`}>
+              <Button
+                variant="outline"
+                size="lg"
+                className="w-full"
+              >
+                <Icon name="phone" className="w-5 h-5 mr-2" />
+                <span className="lg:hidden">Позвонить</span>
+                <span className="hidden lg:inline">{primaryPhone.number}</span>
+              </Button>
+            </a>
           </div>
         </div>
 

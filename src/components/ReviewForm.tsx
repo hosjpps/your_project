@@ -14,17 +14,24 @@ export function ReviewForm({ onSubmitted }: ReviewFormProps) {
   const [text, setText] = useState('')
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const [error, setError] = useState('')
   const [hoverRating, setHoverRating] = useState(0)
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     setSubmitting(true)
-    await supabase.from('reviews').insert({
+    setError('')
+    const { error: insertError } = await supabase.from('reviews').insert({
       name: name.trim(),
       location: location.trim() || null,
       rating,
       text: text.trim(),
     })
+    if (insertError) {
+      setError('Ошибка отправки. Попробуйте позже.')
+      setSubmitting(false)
+      return
+    }
     setSubmitted(true)
     setSubmitting(false)
     setTimeout(() => onSubmitted?.(), 2000)
@@ -98,6 +105,9 @@ export function ReviewForm({ onSubmitted }: ReviewFormProps) {
         className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none resize-none text-text-primary"
       />
 
+      {error && (
+        <p className="text-sm text-red-500 text-center">{error}</p>
+      )}
       <button
         type="submit"
         disabled={submitting}

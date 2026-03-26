@@ -21,7 +21,7 @@ export const company = {
     yearsExperience: '15+',
   },
   yandexMapEmbed:
-    'https://yandex.ru/map-widget/v1/?um=constructor%3A&source=constructorLink&ll=42.178827%2C55.316946&z=16&pt=42.178827%2C55.316946%2Cpm2rdm',
-  yandexMapLink: 'https://yandex.ru/maps/?ll=42.178827%2C55.316946&z=16&pt=42.178827%2C55.316946',
-  twoGisLink: 'https://2gis.ru/vyksa/search/%D1%83%D0%BB.%20%D0%9A%D1%80%D0%B0%D1%81%D0%BD%D1%8B%D0%B5%20%D0%97%D0%BE%D1%80%D0%B8%2C%2031',
+    'https://yandex.ru/map-widget/v1/?ll=42.178827%2C55.316946&z=16&pt=42.178827%2C55.316946%2Cpm2rdm',
+  yandexMapLink: 'https://yandex.ru/maps/-/CHEbr08t',
+  twoGisLink: 'https://2gis.ru/vyksa/geo/70030076151952383',
 } as const

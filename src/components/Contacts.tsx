@@ -15,14 +15,21 @@ export function Contacts({ onPrivacyClick }: ContactsProps) {
   const [submitted, setSubmitted] = useState(false)
   const { ref, isInView } = useInView(0.1)
 
+  const [error, setError] = useState('')
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    await supabase.from('contact_submissions').insert({
+    setError('')
+    const { error: insertError } = await supabase.from('contact_submissions').insert({
       name: formData.name,
       phone: formData.phone,
       email: formData.email || null,
       comment: formData.comment || null,
     })
+    if (insertError) {
+      setError('Не удалось отправить заявку. Позвоните нам по телефону.')
+      return
+    }
     setSubmitted(true)
   }
 
@@ -148,6 +155,9 @@ export function Contacts({ onPrivacyClick }: ContactsProps) {
                   placeholder="Что вас интересует?"
                   className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-text-primary placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors resize-none"
                 />
+                {error && (
+                  <p className="text-sm text-red-500 text-center">{error}</p>
+                )}
                 <Button type="submit" variant="accent" size="lg" className="w-full">
                   <Icon name="send" className="w-5 h-5 mr-2" />
                   Оставить заявку

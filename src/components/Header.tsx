@@ -60,7 +60,7 @@ export function Header() {
         )}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 md:h-20">
+          <div className="flex items-center justify-between h-16 md:h-18">
             {/* Logo */}
             <a
               href="#"
@@ -74,8 +74,8 @@ export function Header() {
                 src="/photo_2026-03-25 20.55.05-Photoroom.png"
                 alt="Свой Проект"
                 className={cn(
-                  'h-10 md:h-12 w-auto transition-all',
-                  scrolled ? '[filter:brightness(0)_invert(12%)_sepia(100%)_saturate(5000%)_hue-rotate(220deg)]' : ''
+                  'h-36 md:h-40 w-auto -my-14 md:-my-16 transition-all',
+                  scrolled ? '[filter:brightness(0)_saturate(100%)_invert(18%)_sepia(90%)_saturate(2500%)_hue-rotate(215deg)_brightness(85%)]' : ''
                 )}
               />
             </a>
