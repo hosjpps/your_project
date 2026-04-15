@@ -1,5 +1,6 @@
 import { useRef, useState, useCallback, useEffect } from 'react'
 import { cn } from '@/lib/utils'
+import { company } from '@/data/company'
 import { reviews as staticReviews } from '@/data/reviews'
 import { supabase } from '@/lib/supabase'
 import { SectionTitle } from '@/components/ui/SectionTitle'
@@ -251,7 +252,9 @@ export function Reviews() {
         {/* External links */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-10">
           <a
-            href="#"
+            href={company.yandexMapLink}
+            target="_blank"
+            rel="noopener noreferrer"
             className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-gray-200 bg-white text-sm font-medium text-text-primary hover:border-primary/30 hover:shadow-md transition-all"
           >
             <Icon name="map-pin" className="w-4 h-4 text-primary" />
@@ -259,7 +262,9 @@ export function Reviews() {
             <Icon name="arrow-up-right" className="w-3.5 h-3.5 text-text-secondary group-hover:text-primary transition-colors" />
           </a>
           <a
-            href="#"
+            href={company.twoGisLink}
+            target="_blank"
+            rel="noopener noreferrer"
             className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-gray-200 bg-white text-sm font-medium text-text-primary hover:border-primary/30 hover:shadow-md transition-all"
           >
             <Icon name="map" className="w-4 h-4 text-primary" />

@@ -36,7 +36,7 @@ export function Footer({ onPrivacyClick }: FooterProps) {
               }}
               className="inline-block mb-4"
             >
-              <img src="/photo_2026-03-25 20.55.05-Photoroom.png" alt="Свой Проект" className="h-10 w-auto" />
+              <img src="/photo_2026-03-25 20.55.05-Photoroom.png" alt="Свой Проект" className="h-32 w-auto -my-10" />
             </a>
             <p className="text-white/50 text-sm leading-relaxed max-w-xs">
               Производство и установка пластиковых окон, дверей, балконного
@@ -112,7 +112,7 @@ export function Footer({ onPrivacyClick }: FooterProps) {
                 window.scrollTo({ top: 0, behavior: 'smooth' })
               }}
             >
-              <img src="/photo_2026-03-25 20.55.05-Photoroom.png" alt="Свой Проект" className="h-8 w-auto" />
+              <img src="/photo_2026-03-25 20.55.05-Photoroom.png" alt="Свой Проект" className="h-24 w-auto -my-8" />
             </a>
           </div>
 

@@ -16,34 +16,45 @@ interface ServiceModalProps {
 // Gallery images per service — real photos where available, placeholders otherwise
 const galleryItems: Record<string, { label: string; icon: string; image?: string }[]> = {
   windows: [
-    { label: 'Окна в квартире', icon: 'home' },
-    { label: 'Панорамное остекление', icon: 'maximize' },
-    { label: 'Окна в коттедже', icon: 'building' },
-    { label: 'Арочные окна', icon: 'circle' },
+    { label: 'Окна в квартире', icon: 'home', image: '/ПВХ1.jpeg' },
+    { label: 'Панорамное остекление', icon: 'maximize', image: '/ПВХ2.jpeg' },
+    { label: 'Окна в коттедже', icon: 'building', image: '/ПВХ3.jpeg' },
+    { label: 'Арочные окна', icon: 'circle', image: '/ПВХ4.jpeg' },
+    { label: 'Окна с ламинацией', icon: 'palette', image: '/ПВХ5.jpeg' },
   ],
   doors: [
-    { label: 'Дверь квартирная', icon: 'door-open' },
-    { label: 'Дверь с терморазрывом', icon: 'thermometer' },
-    { label: 'Дверь в дом', icon: 'home' },
-    { label: 'Техническая дверь', icon: 'lock' },
+    { label: 'Дверь квартирная', icon: 'door-open', image: '/дверь1.jpeg' },
+    { label: 'Дверь с терморазрывом', icon: 'thermometer', image: '/дверь2.jpeg' },
+    { label: 'Дверь в дом', icon: 'home', image: '/дверь3.jpeg' },
+    { label: 'Техническая дверь', icon: 'lock', image: '/дверь4.jpeg' },
+    { label: 'Входная дверь', icon: 'shield', image: '/дверь5.jpeg' },
   ],
   balconies: [
-    { label: 'Тёплое остекление', icon: 'sun' },
-    { label: 'Отделка балкона', icon: 'paintbrush' },
-    { label: 'Балкон под ключ', icon: 'key' },
-    { label: 'Лоджия', icon: 'panel-top' },
+    { label: 'Тёплое остекление', icon: 'sun', image: '/балконы1.jpeg' },
+    { label: 'Отделка балкона', icon: 'paintbrush', image: '/балконы2.jpeg' },
+    { label: 'Балкон под ключ', icon: 'key', image: '/балконы3.jpeg' },
+    { label: 'Лоджия', icon: 'panel-top', image: '/балконы4.jpeg' },
   ],
   gates: [
-    { label: 'Секционные ворота', icon: 'warehouse' },
-    { label: 'Откатные ворота', icon: 'move-horizontal' },
-    { label: 'Распашные ворота', icon: 'door-open' },
-    { label: 'Роллетные ворота', icon: 'blinds' },
+    { label: 'Секционные ворота', icon: 'warehouse', image: '/ворота1.jpeg' },
+    { label: 'Откатные ворота', icon: 'move-horizontal', image: '/ворота2.jpeg' },
+    { label: 'Распашные ворота', icon: 'door-open', image: '/ворота3.jpeg' },
+    { label: 'Ворота с калиткой', icon: 'door-closed', image: '/ворота4.jpeg' },
+    { label: 'Промышленные ворота', icon: 'factory', image: '/ворота5.jpeg' },
+    { label: 'Роллетные ворота', icon: 'blinds', image: '/ворота6(рольставни).jpeg' },
   ],
   blinds: [
-    { label: 'Горизонтальные', icon: 'minus' },
-    { label: 'Вертикальные', icon: 'grip-vertical' },
-    { label: 'Рулонные шторы', icon: 'scroll' },
-    { label: 'День-ночь', icon: 'sun-moon' },
+    { label: 'Горизонтальные', icon: 'minus', image: '/жалюзи1.jpeg' },
+    { label: 'Вертикальные', icon: 'grip-vertical', image: '/жалюзи2.jpeg' },
+    { label: 'Рулонные шторы', icon: 'scroll', image: '/жалюзи3.jpeg' },
+  ],
+  frameless: [
+    { label: 'Безрамное остекление', icon: 'sun', image: '/безрамочное1.jpeg' },
+    { label: 'Панорамный вид', icon: 'maximize', image: '/безрамочное2.jpeg' },
+  ],
+  'soft-windows': [
+    { label: 'Мягкие окна', icon: 'tent', image: '/мягкие-окна1.jpeg' },
+    { label: 'Мягкие окна для веранды', icon: 'home', image: '/мягкие-окна2.jpeg' },
   ],
   aluminum: [
     { label: 'Витражное остекление', icon: 'grid-3x3', image: '/Витражное остекление.jpeg' },
@@ -150,13 +161,13 @@ export function ServiceModal({ service, isOpen, onClose }: ServiceModalProps) {
             </div>
 
             {/* Thumbnails */}
-            <div className="grid grid-cols-4 gap-2 shrink-0">
+            <div className="flex gap-2 shrink-0 overflow-x-auto pb-1">
               {gallery.map((item, i) => (
                 <button
                   key={i}
                   onClick={() => setActiveGallery(i)}
                   className={cn(
-                    'aspect-[4/3] rounded-lg flex items-center justify-center transition-all duration-200 cursor-pointer overflow-hidden',
+                    'w-20 h-16 shrink-0 rounded-lg flex items-center justify-center transition-all duration-200 cursor-pointer overflow-hidden',
                     i === activeGallery
                       ? 'ring-2 ring-primary/40 shadow-sm'
                       : 'border border-gray-200 hover:border-primary/20',
@@ -199,13 +210,13 @@ export function ServiceModal({ service, isOpen, onClose }: ServiceModalProps) {
                   </div>
                 )}
               </div>
-              <div className="grid grid-cols-4 gap-2">
+              <div className="flex gap-2 overflow-x-auto pb-1">
                 {gallery.map((item, i) => (
                   <button
                     key={i}
                     onClick={() => setActiveGallery(i)}
                     className={cn(
-                      'aspect-square rounded-lg flex items-center justify-center cursor-pointer overflow-hidden',
+                      'w-16 h-16 shrink-0 rounded-lg flex items-center justify-center cursor-pointer overflow-hidden',
                       i === activeGallery
                         ? 'ring-2 ring-primary/40'
                         : 'border border-gray-200',

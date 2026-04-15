@@ -22,6 +22,6 @@ export const company = {
   },
   yandexMapEmbed:
     'https://yandex.ru/map-widget/v1/?ll=42.178827%2C55.316946&z=16&pt=42.178827%2C55.316946%2Cpm2rdm',
-  yandexMapLink: 'https://yandex.ru/maps/-/CHEbr08t',
-  twoGisLink: 'https://2gis.ru/vyksa/geo/70030076151952383',
+  yandexMapLink: 'https://yandex.ru/maps/org/svoy_proyekt/1747853816/',
+  twoGisLink: 'https://2gis.ru/vyksa/firm/70000001040483371',
 } as const

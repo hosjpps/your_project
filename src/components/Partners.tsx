@@ -60,23 +60,28 @@ export function Partners() {
             </div>
           ))}
 
-          {/* ГОСТ badge card */}
-          <div
-            className={cn(
-              'flex flex-col items-center justify-center px-6 py-8 md:py-10 rounded-2xl border-2 border-dashed border-success/30 bg-success/5 transition-all duration-500',
-              isInView
-                ? 'opacity-100 translate-y-0'
-                : 'opacity-0 translate-y-6',
-            )}
-            style={{ transitionDelay: isInView ? `${partners.length * 80}ms` : '0ms' }}
-          >
-            <Icon name="shield-check" className="w-8 h-8 text-success mb-2" />
-            <span className="text-sm font-semibold text-success text-center">
-              Соответствует ГОСТ
+        </div>
+
+        {/* ГОСТ banner */}
+        <div
+          className={cn(
+            'flex items-center justify-center gap-4 md:gap-6 px-6 py-5 rounded-2xl bg-gradient-to-r from-success/10 via-success/5 to-success/10 border border-success/20 transition-all duration-500',
+            isInView
+              ? 'opacity-100 translate-y-0'
+              : 'opacity-0 translate-y-6',
+          )}
+          style={{ transitionDelay: isInView ? `${partners.length * 80}ms` : '0ms' }}
+        >
+          <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-success/15 shrink-0">
+            <Icon name="shield-check" className="w-6 h-6 text-success" />
+          </div>
+          <div>
+            <span className="text-sm md:text-base font-bold text-text-primary">
+              Вся продукция сертифицирована и соответствует ГОСТ
             </span>
-            <span className="text-xs text-success/60 mt-1 text-center">
-              Сертифицировано
-            </span>
+            <p className="text-xs md:text-sm text-text-secondary mt-0.5">
+              Гарантия качества на все виды работ и материалов
+            </p>
           </div>
         </div>
       </div>
