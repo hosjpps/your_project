@@ -58,54 +58,15 @@ export function Contacts({ onPrivacyClick }: ContactsProps) {
           </p>
         </div>
 
-        {/* Contact info cards — horizontal strip */}
+        {/* Form + Locations grid */}
         <div className={cn(
-          'grid grid-cols-2 lg:grid-cols-4 gap-3 mb-10 transition-all duration-700',
+          'grid lg:grid-cols-2 gap-6 transition-all duration-700',
           isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6',
         )}>
-          <div className="bg-white rounded-xl p-4 border border-gray-100 shadow-sm">
-            <Icon name="map-pin" className="w-5 h-5 text-accent mb-2" />
-            <p className="text-xs text-text-secondary mb-0.5">Адрес</p>
-            <p className="text-sm font-semibold text-text-primary">{company.address}</p>
-          </div>
-          <div className="bg-white rounded-xl p-4 border border-gray-100 shadow-sm">
-            <Icon name="phone" className="w-5 h-5 text-accent mb-2" />
-            <p className="text-xs text-text-secondary mb-0.5">Телефон</p>
-            <a
-              href={`tel:${company.phones[0].raw}`}
-              className="text-sm font-semibold text-accent hover:underline"
-            >
-              {company.phones[0].number}
-            </a>
-          </div>
-          <div className="bg-white rounded-xl p-4 border border-gray-100 shadow-sm">
-            <Icon name="mail" className="w-5 h-5 text-accent mb-2" />
-            <p className="text-xs text-text-secondary mb-0.5">Email</p>
-            <a
-              href={`mailto:${company.email}`}
-              className="text-sm font-semibold text-text-primary hover:text-accent transition-colors"
-            >
-              {company.email}
-            </a>
-          </div>
-          <div className="bg-white rounded-xl p-4 border border-gray-100 shadow-sm">
-            <Icon name="clock" className="w-5 h-5 text-accent mb-2" />
-            <p className="text-xs text-text-secondary mb-0.5">Режим работы</p>
-            <p className="text-sm font-semibold text-text-primary">
-              Пн–Пт: {company.workHours.weekdays}
-            </p>
-          </div>
-        </div>
-
-        {/* Form + Map row */}
-        <div className={cn(
-          'grid lg:grid-cols-5 gap-6 transition-all duration-700 delay-200',
-          isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6',
-        )}>
-          {/* Form — 2 cols */}
-          <div className="lg:col-span-2 bg-white rounded-2xl p-6 md:p-8 border border-gray-100 shadow-sm">
+          {/* Form — left */}
+          <div className="bg-white rounded-2xl p-6 md:p-8 border border-gray-100 shadow-sm flex flex-col">
             {submitted ? (
-              <div className="text-center py-8">
+              <div className="text-center py-8 flex flex-col items-center justify-center">
                 <div className="w-14 h-14 rounded-full bg-success/10 flex items-center justify-center mx-auto mb-4">
                   <Icon name="check" className="w-7 h-7 text-success" />
                 </div>
@@ -117,8 +78,8 @@ export function Contacts({ onPrivacyClick }: ContactsProps) {
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <h3 className="text-lg font-bold text-text-primary mb-1">
+              <form onSubmit={handleSubmit} className="flex flex-col flex-1 gap-5">
+                <h3 className="text-lg font-bold text-text-primary">
                   Оставить заявку
                 </h3>
                 <input
@@ -149,11 +110,10 @@ export function Contacts({ onPrivacyClick }: ContactsProps) {
                 />
                 <textarea
                   name="comment"
-                  rows={3}
                   value={formData.comment}
                   onChange={handleChange}
                   placeholder="Что вас интересует?"
-                  className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-text-primary placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors resize-none"
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-text-primary placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors resize-none flex-1 min-h-[100px]"
                 />
                 {error && (
                   <p className="text-sm text-red-500 text-center">{error}</p>
@@ -162,7 +122,7 @@ export function Contacts({ onPrivacyClick }: ContactsProps) {
                   <Icon name="send" className="w-5 h-5 mr-2" />
                   Оставить заявку
                 </Button>
-                <p className="text-xs text-text-secondary/60 text-center">
+                <p className="text-xs text-text-secondary/60 text-center -mt-2">
                   Нажимая кнопку, вы соглашаетесь с{' '}
                   <button
                     type="button"
@@ -176,42 +136,72 @@ export function Contacts({ onPrivacyClick }: ContactsProps) {
             )}
           </div>
 
-          {/* Map — 3 cols */}
-          <div className="lg:col-span-3">
-            {/* Desktop: embedded map + links */}
-            <div className="hidden lg:flex flex-col h-full min-h-[360px] gap-3">
-              <iframe
-                src={company.yandexMapEmbed}
-                title="Карта — Свой Проект"
-                className="w-full flex-1 rounded-2xl border border-gray-200"
-                allowFullScreen
-                loading="lazy"
-              />
-              <div className="grid grid-cols-2 gap-3">
+          {/* Right column — locations + email + map buttons */}
+          <div className="flex flex-col gap-4">
+            {/* Location cards */}
+            {company.locations.map((loc) => (
+              <div
+                key={loc.title}
+                className="bg-white rounded-2xl p-5 md:p-6 border border-gray-100 shadow-sm"
+              >
+                {/* Title row */}
+                <div className="flex items-center gap-2.5 mb-4 pb-3 border-b border-gray-100">
+                  <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-accent/10 shrink-0">
+                    <Icon name="map-pin" className="w-4.5 h-4.5 text-accent" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-text-secondary uppercase tracking-wider">Офис</p>
+                    <h3 className="text-base font-bold text-text-primary leading-tight">{loc.title}</h3>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-2.5 mb-3">
+                  <Icon name="map-pin" className="w-4 h-4 text-accent mt-0.5 shrink-0" />
+                  <span className="text-sm text-text-primary leading-snug">{loc.address}</span>
+                </div>
+
+                <div className="flex items-center gap-2.5 mb-3">
+                  <Icon name="phone" className="w-4 h-4 text-accent shrink-0" />
+                  <a
+                    href={`tel:${loc.phone.raw}`}
+                    className="text-sm font-semibold text-accent hover:underline"
+                  >
+                    {loc.phone.number}
+                  </a>
+                </div>
+
+                <div className="flex items-start gap-2.5">
+                  <Icon name="clock" className="w-4 h-4 text-accent mt-0.5 shrink-0" />
+                  <div className="flex flex-col gap-0.5 text-sm">
+                    {loc.hours.map((h) => (
+                      <div key={h.label} className="flex gap-2">
+                        <span className="text-text-secondary w-14 shrink-0">{h.label}</span>
+                        <span className="text-text-primary font-medium">{h.value}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+
+            {/* Email */}
+            <div className="flex items-center gap-3 bg-white rounded-xl p-4 border border-gray-100 shadow-sm">
+              <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-accent/10 shrink-0">
+                <Icon name="mail" className="w-5 h-5 text-accent" />
+              </div>
+              <div className="min-w-0">
+                <p className="text-xs text-text-secondary">Общая почта</p>
                 <a
-                  href={company.yandexMapLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2.5 bg-white rounded-xl py-3 px-5 border border-gray-200 shadow-sm hover:shadow-md transition-all"
+                  href={`mailto:${company.email}`}
+                  className="text-sm md:text-base font-semibold text-text-primary hover:text-accent transition-colors break-all"
                 >
-                  <Icon name="map-pin" className="w-5 h-5 text-primary" />
-                  <span className="text-sm font-semibold text-text-primary">Яндекс.Карты</span>
-                  <Icon name="arrow-up-right" className="w-3.5 h-3.5 text-text-secondary" />
-                </a>
-                <a
-                  href={company.twoGisLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2.5 bg-white rounded-xl py-3 px-5 border border-gray-200 shadow-sm hover:shadow-md transition-all"
-                >
-                  <Icon name="map" className="w-5 h-5 text-primary" />
-                  <span className="text-sm font-semibold text-text-primary">2ГИС</span>
-                  <Icon name="arrow-up-right" className="w-3.5 h-3.5 text-text-secondary" />
+                  {company.email}
                 </a>
               </div>
             </div>
-            {/* Mobile: two map buttons side by side */}
-            <div className="lg:hidden grid grid-cols-2 gap-3">
+
+            {/* Map buttons */}
+            <div className="grid grid-cols-2 gap-3">
               <a
                 href={company.yandexMapLink}
                 target="_blank"

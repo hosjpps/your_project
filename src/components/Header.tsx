@@ -44,10 +44,15 @@ export function Header() {
     []
   )
 
-  const primaryPhone = useMemo(
-    () => company.phones.find((p) => p.primary) ?? company.phones[0],
-    []
-  )
+  const headerPhones = useMemo(() => company.phones.slice(0, 2), [])
+  const [phoneMenuOpen, setPhoneMenuOpen] = useState(false)
+
+  useEffect(() => {
+    if (!phoneMenuOpen) return
+    const close = () => setPhoneMenuOpen(false)
+    window.addEventListener('click', close)
+    return () => window.removeEventListener('click', close)
+  }, [phoneMenuOpen])
 
   return (
     <>
@@ -60,7 +65,7 @@ export function Header() {
         )}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 md:h-18">
+          <div className="flex items-center justify-between h-20 md:h-24">
             {/* Logo */}
             <a
               href="#"
@@ -74,7 +79,7 @@ export function Header() {
                 src="/photo_2026-03-25 20.55.05-Photoroom.png"
                 alt="Свой Проект"
                 className={cn(
-                  'h-36 md:h-40 w-auto -my-14 md:-my-16 transition-all',
+                  'h-40 md:h-48 w-auto -my-14 md:-my-16 transition-all',
                   scrolled ? '[filter:brightness(0)_saturate(100%)_invert(18%)_sepia(90%)_saturate(2500%)_hue-rotate(215deg)_brightness(85%)]' : ''
                 )}
               />
@@ -104,15 +109,20 @@ export function Header() {
 
             {/* Desktop right */}
             <div className="hidden lg:flex items-center gap-4">
-              <a
-                href={`tel:${primaryPhone.raw}`}
-                className={cn(
-                  'text-sm font-semibold transition-colors',
-                  scrolled ? 'text-text-primary hover:text-accent' : 'text-white hover:text-white/80'
-                )}
-              >
-                {primaryPhone.number}
-              </a>
+              <div className="flex flex-col items-end leading-tight tabular-nums">
+                {headerPhones.map((phone) => (
+                  <a
+                    key={phone.raw}
+                    href={`tel:${phone.raw}`}
+                    className={cn(
+                      'text-sm font-semibold transition-colors',
+                      scrolled ? 'text-text-primary hover:text-accent' : 'text-white hover:text-white/80'
+                    )}
+                  >
+                    {phone.number}
+                  </a>
+                ))}
+              </div>
               <Button
                 size="sm"
                 variant="accent"
@@ -124,16 +134,36 @@ export function Header() {
 
             {/* Mobile right */}
             <div className="flex lg:hidden items-center gap-2">
-              <a
-                href={`tel:${primaryPhone.raw}`}
-                className={cn(
-                  'p-2 rounded-lg transition-colors',
-                  scrolled ? 'text-primary hover:bg-primary/5' : 'text-white hover:bg-white/10'
+              <div className="relative" onClick={(e) => e.stopPropagation()}>
+                <button
+                  onClick={() => setPhoneMenuOpen((v) => !v)}
+                  className={cn(
+                    'p-2 rounded-lg transition-colors cursor-pointer',
+                    scrolled ? 'text-primary hover:bg-primary/5' : 'text-white hover:bg-white/10'
+                  )}
+                  aria-label="Позвонить"
+                  aria-expanded={phoneMenuOpen}
+                >
+                  <Icon name="phone" className="w-5 h-5" />
+                </button>
+                {phoneMenuOpen && (
+                  <div className="absolute right-0 top-full mt-2 w-64 rounded-xl bg-white shadow-2xl border border-gray-100 overflow-hidden z-50">
+                    {headerPhones.map((phone) => (
+                      <a
+                        key={phone.raw}
+                        href={`tel:${phone.raw}`}
+                        onClick={() => setPhoneMenuOpen(false)}
+                        className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-b-0"
+                      >
+                        <Icon name="phone" className="w-4 h-4 text-accent shrink-0" />
+                        <span className="text-sm font-semibold text-text-primary">
+                          {phone.number}
+                        </span>
+                      </a>
+                    ))}
+                  </div>
                 )}
-                aria-label="Позвонить"
-              >
-                <Icon name="phone" className="w-5 h-5" />
-              </a>
+              </div>
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
                 className={cn(

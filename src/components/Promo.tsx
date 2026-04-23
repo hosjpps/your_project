@@ -17,7 +17,7 @@ export function Promo() {
       />
 
       {/* Decorative "%" symbol */}
-      <div className="absolute -right-8 top-1/2 -translate-y-1/2 text-[20rem] md:text-[28rem] font-black text-white/5 rotate-12 select-none leading-none pointer-events-none">
+      <div className="absolute -right-16 md:-right-24 top-1/2 -translate-y-1/2 text-[36rem] md:text-[52rem] font-black text-white/[0.07] rotate-12 select-none leading-none pointer-events-none">
         %
       </div>
 
@@ -69,41 +69,27 @@ export function Promo() {
               </span>
             </Button>
 
-            {/* Trust counter */}
-            <div className="mt-8 flex items-center justify-center lg:justify-start gap-2.5 text-white/80 text-sm">
-              {/* Pulsing green dot */}
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-400" />
-              </span>
-              Уже 127 человек записались в этом месяце
-            </div>
-
-            <p className="mt-4 text-xs text-white/50">
-              Предложение действует для жителей г. Выкса и района
-            </p>
           </div>
 
-          {/* Right — abstract glass shapes */}
-          <div className="hidden lg:flex flex-shrink-0 w-72 h-72 xl:w-80 xl:h-80 items-center justify-center relative">
-            {/* Shape 1 — large */}
+          {/* Right — photo framed with glass shape accents */}
+          <div className="hidden lg:flex flex-shrink-0 w-[440px] h-[520px] xl:w-[500px] xl:h-[580px] items-center justify-center relative">
+            {/* Back accent shape */}
             <div
-              className="absolute w-48 h-56 rounded-3xl bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl"
-              style={{ transform: 'rotate(-6deg) translateX(10px)' }}
+              className="absolute w-80 h-[24rem] rounded-[2rem] bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl"
+              style={{ transform: 'rotate(-8deg) translate(-60px, -40px)' }}
             />
-            {/* Shape 2 — medium */}
+            {/* Mid accent shape */}
             <div
-              className="absolute w-40 h-48 rounded-2xl bg-white/15 backdrop-blur-sm border border-white/25 shadow-xl"
-              style={{ transform: 'rotate(8deg) translate(-20px, 15px)' }}
+              className="absolute w-72 h-[22rem] rounded-[2rem] bg-white/15 backdrop-blur-sm border border-white/25 shadow-xl"
+              style={{ transform: 'rotate(6deg) translate(70px, 50px)' }}
             />
-            {/* Shape 3 — small accent */}
-            <div
-              className="absolute w-28 h-32 rounded-2xl bg-white/20 backdrop-blur border border-white/30 shadow-lg"
-              style={{ transform: 'rotate(-12deg) translate(30px, -25px)' }}
-            />
-            {/* Inner icon */}
-            <div className="relative z-10 w-16 h-16 rounded-xl bg-white/25 backdrop-blur-md border border-white/30 flex items-center justify-center">
-              <Icon name="calendar-check" className="w-8 h-8 text-white" />
+            {/* Man photo — rounded frame */}
+            <div className="relative z-10 w-72 h-[24rem] xl:w-80 xl:h-[26rem] rounded-[1.75rem] overflow-hidden border-4 border-white/30 shadow-2xl">
+              <img
+                src="/мужик.jpeg"
+                alt="Специалист «Свой Проект»"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
         </div>

@@ -149,12 +149,12 @@ export function Hero() {
           {stats.map((stat) => (
             <div
               key={stat.label}
-              className="flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 py-3"
+              className="flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-5 py-4"
             >
-              <Icon name={stat.icon} className="w-5 h-5 text-accent shrink-0" />
+              <Icon name={stat.icon} className="w-7 h-7 text-accent shrink-0" />
               <div className="min-w-0">
-                <span className="text-lg font-bold text-white">{stat.value}</span>
-                <span className="text-xs text-white/60 ml-1.5">{stat.label}</span>
+                <div className="text-2xl font-bold text-white leading-tight">{stat.value}</div>
+                <div className="text-sm text-white/60">{stat.label}</div>
               </div>
             </div>
           ))}
@@ -165,13 +165,15 @@ export function Hero() {
           {stats.map((stat) => (
             <div
               key={stat.label}
-              className="absolute flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-6 py-3 hover:bg-white/15 transition-colors duration-300 hover:scale-105 transform"
+              className="absolute flex items-center gap-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-8 py-5 hover:bg-white/15 transition-all duration-300 hover:scale-105 shadow-2xl shadow-black/20"
               style={{ top: stat.top, right: stat.right }}
             >
-              <Icon name={stat.icon} className="w-5 h-5 text-accent shrink-0" />
+              <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-accent/15 shrink-0">
+                <Icon name={stat.icon} className="w-6 h-6 text-accent" />
+              </div>
               <div>
-                <span className="text-xl font-bold text-white">{stat.value}</span>
-                <span className="text-sm text-white/60 ml-2">{stat.label}</span>
+                <div className="text-3xl font-bold text-white leading-tight">{stat.value}</div>
+                <div className="text-base text-white/70">{stat.label}</div>
               </div>
             </div>
           ))}

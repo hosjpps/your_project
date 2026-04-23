@@ -4,14 +4,14 @@ import { Icon } from '@/components/ui/Icon'
 import { useInView } from '@/hooks/useInView'
 
 const partners = [
-  { name: 'REHAU', description: 'Профильные системы', accent: 'group-hover:border-violet-400 group-hover:bg-violet-50' },
-  { name: 'Ivaper', description: 'Оконные профили', accent: 'group-hover:border-blue-400 group-hover:bg-blue-50' },
-  { name: 'Brusbox', description: 'ПВХ-системы', accent: 'group-hover:border-sky-400 group-hover:bg-sky-50' },
-  { name: 'MACO', description: 'Фурнитура', accent: 'group-hover:border-red-400 group-hover:bg-red-50' },
-  { name: 'Roto', description: 'Фурнитура', accent: 'group-hover:border-amber-400 group-hover:bg-amber-50' },
-  { name: 'Siegenia Titan', description: 'Фурнитура', accent: 'group-hover:border-emerald-400 group-hover:bg-emerald-50' },
-  { name: 'Alutech', description: 'Ворота и роллеты', accent: 'group-hover:border-teal-400 group-hover:bg-teal-50' },
-  { name: 'DoorHan', description: 'Ворота и двери', accent: 'group-hover:border-orange-400 group-hover:bg-orange-50' },
+  { name: 'REHAU', description: 'Профильные системы', border: 'border-violet-300', bg: 'bg-violet-50', nameColor: 'text-violet-700', descColor: 'text-violet-500/80' },
+  { name: 'Ivaper', description: 'Оконные профили', border: 'border-blue-300', bg: 'bg-blue-50', nameColor: 'text-blue-700', descColor: 'text-blue-500/80' },
+  { name: 'Brusbox', description: 'ПВХ-системы', border: 'border-sky-300', bg: 'bg-sky-50', nameColor: 'text-sky-700', descColor: 'text-sky-500/80' },
+  { name: 'MACO', description: 'Фурнитура', border: 'border-red-300', bg: 'bg-red-50', nameColor: 'text-red-700', descColor: 'text-red-500/80' },
+  { name: 'Roto', description: 'Фурнитура', border: 'border-amber-300', bg: 'bg-amber-50', nameColor: 'text-amber-700', descColor: 'text-amber-600/80' },
+  { name: 'Siegenia Titan', description: 'Фурнитура', border: 'border-emerald-300', bg: 'bg-emerald-50', nameColor: 'text-emerald-700', descColor: 'text-emerald-600/80' },
+  { name: 'Alutech', description: 'Ворота и роллеты', border: 'border-teal-300', bg: 'bg-teal-50', nameColor: 'text-teal-700', descColor: 'text-teal-600/80' },
+  { name: 'DoorHan', description: 'Ворота и двери', border: 'border-orange-300', bg: 'bg-orange-50', nameColor: 'text-orange-700', descColor: 'text-orange-600/80' },
 ]
 
 export function Partners() {
@@ -40,8 +40,9 @@ export function Partners() {
             <div
               key={partner.name}
               className={cn(
-                'group relative flex flex-col items-center justify-center px-6 py-8 md:py-10 rounded-2xl border-2 border-gray-100 bg-gray-50/50 transition-all duration-500 cursor-default select-none',
-                partner.accent,
+                'group relative flex flex-col items-center justify-center px-6 py-8 md:py-10 rounded-2xl border-2 transition-all duration-500 cursor-default select-none',
+                partner.border,
+                partner.bg,
                 'hover:shadow-lg hover:-translate-y-1',
                 isInView
                   ? 'opacity-100 translate-y-0'
@@ -50,11 +51,11 @@ export function Partners() {
               style={{ transitionDelay: isInView ? `${i * 80}ms` : '0ms' }}
             >
               {/* Brand name as "logo" */}
-              <span className="text-2xl md:text-3xl font-extrabold tracking-wider text-gray-300 group-hover:text-gray-700 transition-colors duration-300">
+              <span className={cn('text-2xl md:text-3xl font-extrabold tracking-wider', partner.nameColor)}>
                 {partner.name}
               </span>
               {/* Description */}
-              <span className="mt-2 text-xs text-gray-400 group-hover:text-gray-500 transition-colors duration-300">
+              <span className={cn('mt-2 text-xs font-medium', partner.descColor)}>
                 {partner.description}
               </span>
             </div>

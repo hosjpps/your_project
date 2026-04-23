@@ -28,6 +28,6 @@ export const advantages: Advantage[] = [
   {
     icon: 'file-check',
     title: 'Сертифицированные материалы',
-    description: 'Вся продукция соответствует строительным нормам РФ',
+    description: 'Вся продукция соответствует ГОСТ',
   },
 ]

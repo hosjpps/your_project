@@ -47,7 +47,7 @@ export function Advantages() {
                 >
                   {/* Large number */}
                   <div className="flex-shrink-0 relative">
-                    <span className="text-7xl md:text-8xl font-black text-primary/10 leading-none select-none">
+                    <span className="text-7xl md:text-8xl font-black text-accent/25 leading-none select-none">
                       {number}
                     </span>
                   </div>

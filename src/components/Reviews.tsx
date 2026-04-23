@@ -250,7 +250,7 @@ export function Reviews() {
         </div>
 
         {/* External links */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-10">
+        <div className="flex items-center justify-center gap-3 sm:gap-6 mt-10 flex-wrap">
           <a
             href={company.yandexMapLink}
             target="_blank"

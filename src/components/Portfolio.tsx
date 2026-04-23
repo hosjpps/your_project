@@ -69,13 +69,13 @@ export function Portfolio() {
                     className="absolute inset-0 w-full h-full object-cover"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/30 transition-colors duration-300" />
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 pt-8">
-                    <p className="text-white text-sm md:text-base font-medium leading-snug">
+                  <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/20 transition-colors duration-300" />
+                  <div className="absolute bottom-4 left-4 right-4 rounded-xl bg-white/15 backdrop-blur-md border border-white/20 px-4 py-3 shadow-lg">
+                    <p className="text-white text-sm md:text-base font-semibold leading-snug drop-shadow">
                       {item.title}
                     </p>
                     {item.description && (
-                      <p className="text-white/70 text-xs mt-1">{item.description}</p>
+                      <p className="text-white/80 text-xs mt-1 drop-shadow">{item.description}</p>
                     )}
                   </div>
                 </div>
@@ -96,9 +96,9 @@ export function Portfolio() {
                     className="absolute inset-0 w-full h-full object-cover"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/30 transition-colors duration-300" />
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 pt-8">
-                    <p className="text-white text-sm md:text-base font-medium leading-snug">
+                  <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/20 transition-colors duration-300" />
+                  <div className="absolute bottom-4 left-4 right-4 rounded-xl bg-white/15 backdrop-blur-md border border-white/20 px-4 py-3 shadow-lg">
+                    <p className="text-white text-sm md:text-base font-semibold leading-snug drop-shadow">
                       {item.title}
                     </p>
                   </div>

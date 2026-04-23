@@ -46,11 +46,11 @@ export function Services() {
                   key={service.id}
                   onClick={() => setSelectedService(service)}
                   className={cn(
-                    'group relative text-left rounded-2xl overflow-hidden',
+                    'group relative text-left rounded-2xl overflow-hidden flex flex-col',
                     'bg-white border border-gray-100/80',
                     'transition-all duration-500 cursor-pointer',
-                    'hover:-translate-y-1.5 hover:shadow-xl hover:shadow-primary/10 hover:border-primary/20',
-                    'focus:outline-none focus:ring-2 focus:ring-primary/30 focus:ring-offset-2',
+                    'hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-primary/15 hover:border-accent/40',
+                    'focus:outline-none focus:ring-2 focus:ring-accent/40 focus:ring-offset-2',
                     isRegular ? 'lg:col-span-2' : 'lg:col-span-3',
                     isInView
                       ? 'opacity-100 translate-y-0'
@@ -60,34 +60,51 @@ export function Services() {
                     transitionDelay: isInView ? `${i * 120}ms` : '0ms',
                   }}
                 >
-                  {/* Gradient top border */}
-                  <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-primary via-accent/60 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
+                  {/* Image on top */}
+                  <div className="relative h-56 md:h-64 overflow-hidden bg-gradient-to-br from-primary/5 to-accent/5">
+                    {service.cardImage ? (
+                      <img
+                        src={service.cardImage}
+                        alt={service.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center">
+                        <Icon name={service.icon} className="w-20 h-20 text-primary/20" />
+                      </div>
+                    )}
+                    {/* Gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
 
-                  {/* Card content */}
-                  <div className="relative p-6 md:p-8">
-                    {/* Card number — top right */}
+                    {/* Card number — top right over photo */}
                     <span
                       aria-hidden="true"
-                      className="absolute top-4 right-5 text-4xl font-bold text-primary/10 select-none"
+                      className="absolute top-4 right-5 text-4xl font-bold text-white/70 select-none drop-shadow-lg"
                     >
                       {formatNumber(i + 1)}
                     </span>
 
-                    {/* Icon in gradient box */}
-                    <div className="flex items-center justify-center rounded-xl bg-gradient-to-br from-primary/10 to-accent/5 transition-transform duration-300 group-hover:scale-110 w-14 h-14 mb-5">
+                    {/* Accent corner ribbon */}
+                    <div className="absolute top-0 left-0 h-1 w-full bg-gradient-to-r from-accent via-accent/80 to-transparent" />
+
+                    {/* Icon badge — bottom left over photo */}
+                    <div className="absolute bottom-4 left-4 flex items-center justify-center w-12 h-12 rounded-xl bg-accent shadow-lg shadow-accent/30">
                       <Icon
                         name={service.icon}
-                        className="w-7 h-7 text-primary"
+                        className="w-6 h-6 text-white"
                       />
                     </div>
+                  </div>
 
+                  {/* Content */}
+                  <div className="relative p-6 md:p-7 flex-1 flex flex-col">
                     {/* Title */}
-                    <h3 className="font-bold text-text-primary mb-3 group-hover:text-primary transition-colors duration-300 text-lg md:text-xl">
+                    <h3 className="font-bold text-text-primary mb-2 group-hover:text-primary transition-colors duration-300 text-lg md:text-xl">
                       {service.title}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-text-secondary leading-relaxed mb-6 text-sm">
+                    <p className="text-text-secondary leading-relaxed mb-5 text-sm flex-1">
                       {service.shortDescription}
                     </p>
 

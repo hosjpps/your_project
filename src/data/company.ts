@@ -11,6 +11,31 @@ export const company = {
     { number: '+7 (83177) 6-14-50', raw: '+78317761450', primary: false },
     { number: '+7 (83177) 3-99-77', raw: '+78317739977', primary: false },
   ],
+  locations: [
+    {
+      title: 'Красные Зори',
+      address: 'г. Выкса, ул. Красные Зори, 31',
+      phone: { number: '+7 (929) 050-55-58', raw: '+79290505558' },
+      hours: [
+        { label: 'Пн–Пт', value: '09:00 – 17:00' },
+        { label: 'Сб', value: '09:00 – 14:00' },
+        { label: 'Вс', value: 'выходной' },
+      ],
+      yandexMapLink: 'https://yandex.ru/maps/org/svoy_proyekt/1747853816/',
+      twoGisLink: 'https://2gis.ru/vyksa/firm/70000001040483371',
+    },
+    {
+      title: 'Запрудная',
+      address: 'г. Выкса, Запрудная ул., 1 к18',
+      phone: { number: '+7 (930) 717-78-77', raw: '+79307177877' },
+      hours: [
+        { label: 'Пн–Пт', value: '08:00 – 17:00' },
+        { label: 'Сб–Вс', value: 'выходной' },
+      ],
+      yandexMapLink: 'https://yandex.ru/maps/org/svoy_proyekt/1747853816/',
+      twoGisLink: 'https://2gis.ru/vyksa/firm/70000001040483371',
+    },
+  ],
   email: 'svoy.proekt@mail.ru',
   workHours: {
     weekdays: '09:00 – 17:00',
