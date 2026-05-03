@@ -9,6 +9,7 @@ const navLinks = [
   { label: 'Услуги', href: '#services' },
   { label: 'Преимущества', href: '#advantages' },
   { label: 'Наши работы', href: '#portfolio' },
+  { label: 'Отзывы', href: '#reviews' },
   { label: 'Контакты', href: '#contacts' },
 ]
 
@@ -77,10 +78,14 @@ export function Header() {
             >
               <img
                 src="/photo_2026-03-25 20.55.05-Photoroom.png"
-                alt="Свой Проект"
+                alt="Свой Проект — оконная компания в Выксе"
+                width={1024}
+                height={1024}
                 className={cn(
-                  'h-40 md:h-48 w-auto -my-14 md:-my-16 transition-all',
-                  scrolled ? '[filter:brightness(0)_saturate(100%)_invert(18%)_sepia(90%)_saturate(2500%)_hue-rotate(215deg)_brightness(85%)]' : ''
+                  'h-40 w-40 md:h-48 md:w-48 object-contain -my-14 md:-my-16 transition-all',
+                  scrolled
+                    ? '[filter:brightness(0)_saturate(100%)_invert(10%)_sepia(85%)_saturate(3500%)_hue-rotate(228deg)_brightness(70%)]'
+                    : '[filter:brightness(0)_invert(1)]'
                 )}
               />
             </a>
@@ -197,7 +202,7 @@ export function Header() {
           )}
         >
           <div className="flex items-center justify-between p-4 border-b border-gray-100">
-            <img src="/photo_2026-03-25 20.55.05-Photoroom.png" alt="Свой Проект" className="h-10 w-auto [filter:brightness(0)_invert(12%)_sepia(100%)_saturate(5000%)_hue-rotate(220deg)]" />
+            <img src="/photo_2026-03-25 20.55.05-Photoroom.png" alt="Свой Проект" width={1024} height={1024} className="h-10 w-10 object-contain [filter:brightness(0)_invert(12%)_sepia(100%)_saturate(5000%)_hue-rotate(220deg)]" />
             <button
               onClick={() => setMobileOpen(false)}
               className="p-2 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"

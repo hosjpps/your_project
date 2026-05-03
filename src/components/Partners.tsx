@@ -40,7 +40,7 @@ export function Partners() {
             <div
               key={partner.name}
               className={cn(
-                'group relative flex flex-col items-center justify-center px-6 py-8 md:py-10 rounded-2xl border-2 transition-all duration-500 cursor-default select-none',
+                'group relative flex flex-col items-center justify-center text-center min-h-[120px] md:min-h-[150px] px-3 md:px-6 py-6 md:py-10 rounded-2xl border-2 transition-all duration-500 cursor-default select-none',
                 partner.border,
                 partner.bg,
                 'hover:shadow-lg hover:-translate-y-1',
@@ -51,11 +51,11 @@ export function Partners() {
               style={{ transitionDelay: isInView ? `${i * 80}ms` : '0ms' }}
             >
               {/* Brand name as "logo" */}
-              <span className={cn('text-2xl md:text-3xl font-extrabold tracking-wider', partner.nameColor)}>
+              <span className={cn('text-lg md:text-3xl font-extrabold tracking-wider whitespace-nowrap', partner.nameColor)}>
                 {partner.name}
               </span>
               {/* Description */}
-              <span className={cn('mt-2 text-xs font-medium', partner.descColor)}>
+              <span className={cn('mt-1.5 md:mt-2 text-[11px] md:text-xs font-medium', partner.descColor)}>
                 {partner.description}
               </span>
             </div>

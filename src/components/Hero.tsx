@@ -145,16 +145,16 @@ export function Hero() {
 
         {/* ── Floating glassmorphism stat pills — Desktop: absolute, Mobile: 2x2 grid ── */}
         {/* Mobile grid */}
-        <div className="grid grid-cols-2 gap-3 mt-10 lg:hidden">
+        <div className="grid grid-cols-3 gap-2 mt-10 lg:hidden">
           {stats.map((stat) => (
             <div
               key={stat.label}
-              className="flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-5 py-4"
+              className="flex flex-col items-start gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-3 py-3"
             >
-              <Icon name={stat.icon} className="w-7 h-7 text-accent shrink-0" />
+              <Icon name={stat.icon} className="w-5 h-5 text-accent shrink-0" />
               <div className="min-w-0">
-                <div className="text-2xl font-bold text-white leading-tight">{stat.value}</div>
-                <div className="text-sm text-white/60">{stat.label}</div>
+                <div className="text-lg font-bold text-white leading-tight">{stat.value}</div>
+                <div className="text-xs text-white/60 leading-tight">{stat.label}</div>
               </div>
             </div>
           ))}
