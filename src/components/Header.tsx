@@ -80,7 +80,7 @@ export function Header() {
                 alt="Свой Проект — оконная компания в Выксе"
                 width={1024}
                 height={1024}
-                className="h-48 w-48 md:h-56 md:w-56 object-contain -my-14 md:-my-16 transition-all [filter:brightness(0)_saturate(100%)_invert(10%)_sepia(85%)_saturate(3500%)_hue-rotate(228deg)_brightness(70%)]"
+                className="h-48 w-48 md:h-56 md:w-56 object-contain -my-14 md:-my-16 transition-all [filter:brightness(0)_saturate(100%)_invert(13%)_sepia(75%)_saturate(2200%)_hue-rotate(215deg)_brightness(85%)_contrast(105%)]"
               />
             </a>
 
@@ -183,7 +183,7 @@ export function Header() {
           )}
         >
           <div className="flex items-center justify-between p-4 border-b border-gray-100">
-            <img src="/photo_2026-03-25 20.55.05-Photoroom.png" alt="Свой Проект" width={1024} height={1024} className="h-10 w-10 object-contain [filter:brightness(0)_invert(12%)_sepia(100%)_saturate(5000%)_hue-rotate(220deg)]" />
+            <img src="/photo_2026-03-25 20.55.05-Photoroom.png" alt="Свой Проект" width={1024} height={1024} className="h-32 w-32 object-contain -my-10 [filter:brightness(0)_saturate(100%)_invert(13%)_sepia(75%)_saturate(2200%)_hue-rotate(215deg)_brightness(85%)_contrast(105%)]" />
             <button
               onClick={() => setMobileOpen(false)}
               className="p-2 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"
