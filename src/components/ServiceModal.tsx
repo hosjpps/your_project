@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from 'react'
 import { cn } from '@/lib/utils'
 import { supabase } from '@/lib/supabase'
+import { sendLeadEmail } from '@/lib/email'
 import { Button } from '@/components/ui/Button'
 import { Icon } from '@/components/ui/Icon'
 import { type ServiceDetail } from '@/data/services'
@@ -103,6 +104,12 @@ export function ServiceModal({ service, isOpen, onClose }: ServiceModalProps) {
       setSubmitting(false)
       return
     }
+    sendLeadEmail({
+      name: name.trim(),
+      phone: phone.trim(),
+      comment: service ? `Заявка из карточки: ${service.title}` : null,
+      source: service ? `Карточка: ${service.title}` : 'Карточка услуги',
+    })
     setSubmitted(true)
     setSubmitting(false)
   }

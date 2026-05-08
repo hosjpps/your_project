@@ -2,7 +2,7 @@ import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { Icon } from '@/components/ui/Icon'
 import { company } from '@/data/company'
-import { useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 const stats = [
   { value: '15+', label: 'лет опыта', icon: 'calendar', top: '18%', right: '6%' },
@@ -15,6 +15,15 @@ export function Hero() {
     () => company.phones.find((p) => p.primary) ?? company.phones[0],
     []
   )
+  const callPhones = useMemo(() => company.phones.slice(0, 2), [])
+  const [phoneMenuOpen, setPhoneMenuOpen] = useState(false)
+
+  useEffect(() => {
+    if (!phoneMenuOpen) return
+    const close = () => setPhoneMenuOpen(false)
+    window.addEventListener('click', close)
+    return () => window.removeEventListener('click', close)
+  }, [phoneMenuOpen])
 
   const scrollTo = (href: string) => {
     const el = document.querySelector(href)
@@ -129,15 +138,46 @@ export function Hero() {
               <Icon name="calculator" className="w-5 h-5 mr-2" />
               Рассчитать стоимость
             </Button>
-            <a href={`tel:${primaryPhone.raw}`}>
+            {/* Mobile: dropdown with both phones */}
+            <div className="relative lg:hidden" onClick={(e) => e.stopPropagation()}>
+              <Button
+                variant="outline"
+                size="lg"
+                className="w-full"
+                onClick={() => setPhoneMenuOpen((v) => !v)}
+                aria-expanded={phoneMenuOpen}
+              >
+                <Icon name="phone" className="w-5 h-5 mr-2" />
+                Позвонить
+              </Button>
+              {phoneMenuOpen && (
+                <div className="absolute left-0 right-0 top-full mt-2 rounded-xl bg-white shadow-2xl border border-gray-100 overflow-hidden z-50">
+                  {callPhones.map((phone) => (
+                    <a
+                      key={phone.raw}
+                      href={`tel:${phone.raw}`}
+                      onClick={() => setPhoneMenuOpen(false)}
+                      className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-b-0"
+                    >
+                      <Icon name="phone" className="w-4 h-4 text-accent shrink-0" />
+                      <span className="text-sm font-semibold text-text-primary">
+                        {phone.number}
+                      </span>
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Desktop: direct call to primary */}
+            <a href={`tel:${primaryPhone.raw}`} className="hidden lg:block">
               <Button
                 variant="outline"
                 size="lg"
                 className="w-full"
               >
                 <Icon name="phone" className="w-5 h-5 mr-2" />
-                <span className="lg:hidden">Позвонить</span>
-                <span className="hidden lg:inline">{primaryPhone.number}</span>
+                {primaryPhone.number}
               </Button>
             </a>
           </div>

@@ -7,7 +7,7 @@ export function Advantages() {
   const { ref, isInView } = useInView(0.05)
 
   return (
-    <section id="advantages" className="relative bg-white py-16 md:py-24 overflow-hidden">
+    <section id="advantages" className="relative bg-gradient-to-br from-orange-100 via-orange-200 to-orange-300 py-16 md:py-24 overflow-hidden">
       {/* Vertical accent line */}
       <div className="absolute left-4 md:left-8 top-[20%] h-[60%] w-0.5 bg-gradient-to-b from-transparent via-primary/30 to-transparent" />
 
@@ -47,7 +47,7 @@ export function Advantages() {
                 >
                   {/* Large number */}
                   <div className="flex-shrink-0 relative">
-                    <span className="text-7xl md:text-8xl font-black text-accent/25 leading-none select-none">
+                    <span className="text-7xl md:text-8xl font-black text-accent leading-none select-none drop-shadow-[0_2px_4px_rgba(245,158,11,0.25)]">
                       {number}
                     </span>
                   </div>

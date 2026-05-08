@@ -2,6 +2,7 @@ import { useState, type FormEvent } from 'react'
 import { cn } from '@/lib/utils'
 import { company } from '@/data/company'
 import { supabase } from '@/lib/supabase'
+import { sendLeadEmail } from '@/lib/email'
 import { Button } from '@/components/ui/Button'
 import { Icon } from '@/components/ui/Icon'
 import { useInView } from '@/hooks/useInView'
@@ -30,6 +31,13 @@ export function Contacts({ onPrivacyClick }: ContactsProps) {
       setError('Не удалось отправить заявку. Позвоните нам по телефону.')
       return
     }
+    sendLeadEmail({
+      name: formData.name,
+      phone: formData.phone,
+      email: formData.email,
+      comment: formData.comment,
+      source: 'Форма «Контакты»',
+    })
     setSubmitted(true)
   }
 

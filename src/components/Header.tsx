@@ -60,9 +60,8 @@ export function Header() {
       <header
         className={cn(
           'fixed top-0 left-0 right-0 z-40 transition-all duration-300',
-          scrolled
-            ? 'bg-white/95 backdrop-blur-md shadow-lg shadow-black/5'
-            : 'bg-transparent'
+          'bg-white/95 backdrop-blur-md',
+          scrolled ? 'shadow-lg shadow-black/5' : 'shadow-sm shadow-black/5'
         )}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -81,12 +80,7 @@ export function Header() {
                 alt="Свой Проект — оконная компания в Выксе"
                 width={1024}
                 height={1024}
-                className={cn(
-                  'h-40 w-40 md:h-48 md:w-48 object-contain -my-14 md:-my-16 transition-all',
-                  scrolled
-                    ? '[filter:brightness(0)_saturate(100%)_invert(10%)_sepia(85%)_saturate(3500%)_hue-rotate(228deg)_brightness(70%)]'
-                    : '[filter:brightness(0)_invert(1)]'
-                )}
+                className="h-48 w-48 md:h-56 md:w-56 object-contain -my-14 md:-my-16 transition-all [filter:brightness(0)_saturate(100%)_invert(10%)_sepia(85%)_saturate(3500%)_hue-rotate(228deg)_brightness(70%)]"
               />
             </a>
 
@@ -99,12 +93,8 @@ export function Header() {
                   className={cn(
                     'px-3 py-2 text-sm font-medium rounded-lg transition-colors cursor-pointer',
                     activeId === link.href.slice(1)
-                      ? scrolled
-                        ? 'text-accent bg-accent/5'
-                        : 'text-white bg-white/15'
-                      : scrolled
-                        ? 'text-text-primary hover:text-accent hover:bg-accent/5'
-                        : 'text-white/80 hover:text-white hover:bg-white/10'
+                      ? 'text-accent bg-accent/5'
+                      : 'text-text-primary hover:text-accent hover:bg-accent/5'
                   )}
                 >
                   {link.label}
@@ -119,10 +109,7 @@ export function Header() {
                   <a
                     key={phone.raw}
                     href={`tel:${phone.raw}`}
-                    className={cn(
-                      'text-sm font-semibold transition-colors',
-                      scrolled ? 'text-text-primary hover:text-accent' : 'text-white hover:text-white/80'
-                    )}
+                    className="text-sm font-semibold text-text-primary hover:text-accent transition-colors"
                   >
                     {phone.number}
                   </a>
@@ -142,10 +129,7 @@ export function Header() {
               <div className="relative" onClick={(e) => e.stopPropagation()}>
                 <button
                   onClick={() => setPhoneMenuOpen((v) => !v)}
-                  className={cn(
-                    'p-2 rounded-lg transition-colors cursor-pointer',
-                    scrolled ? 'text-primary hover:bg-primary/5' : 'text-white hover:bg-white/10'
-                  )}
+                  className="p-2 rounded-lg text-primary hover:bg-primary/5 transition-colors cursor-pointer"
                   aria-label="Позвонить"
                   aria-expanded={phoneMenuOpen}
                 >
@@ -171,10 +155,7 @@ export function Header() {
               </div>
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className={cn(
-                  'p-2 rounded-lg transition-colors cursor-pointer',
-                  scrolled ? 'text-primary hover:bg-primary/5' : 'text-white hover:bg-white/10'
-                )}
+                className="p-2 rounded-lg text-primary hover:bg-primary/5 transition-colors cursor-pointer"
                 aria-label={mobileOpen ? 'Закрыть меню' : 'Открыть меню'}
               >
                 <Icon name={mobileOpen ? 'x' : 'menu'} className="w-6 h-6" />

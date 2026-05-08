@@ -8,11 +8,37 @@ import type { PortfolioItem } from '@/lib/types'
 
 const BUCKET = 'portfolio-images'
 
-const staticItems = [
-  { title: 'Витражное остекление', image: '/Витражное остекление.jpeg' },
-  { title: 'Входная группа', image: '/Входная группа.jpeg' },
-  { title: 'Офисная перегородка', image: '/Офисная перегородка.jpeg' },
-  { title: 'Фасадное остекление', image: '/Фасадное остекление.jpeg' },
+const staticItems: { title: string; description?: string; image: string }[] = [
+  {
+    title: 'Витражное остекление коттеджа',
+    description: 'Алюминиевый профиль, г. Выкса',
+    image: '/Витражное остекление.jpeg',
+  },
+  {
+    title: 'Панорамные окна',
+    description: 'Загородный дом, профиль REHAU',
+    image: '/ПВХ2.jpeg',
+  },
+  {
+    title: 'Тёплое остекление балкона',
+    description: 'Квартира на Красных Зорях',
+    image: '/балконы1.jpeg',
+  },
+  {
+    title: 'Секционные ворота',
+    description: 'Гараж в частном секторе',
+    image: '/ворота1.jpeg',
+  },
+  {
+    title: 'Входная группа',
+    description: 'Офисное здание, алюминий',
+    image: '/Входная группа.jpeg',
+  },
+  {
+    title: 'Фасадное остекление',
+    description: 'Коммерческий объект',
+    image: '/Фасадное остекление.jpeg',
+  },
 ]
 
 function getPublicUrl(path: string) {
@@ -101,6 +127,9 @@ export function Portfolio() {
                     <p className="text-white text-sm md:text-base font-semibold leading-snug drop-shadow">
                       {item.title}
                     </p>
+                    {item.description && (
+                      <p className="text-white/80 text-xs mt-1 drop-shadow">{item.description}</p>
+                    )}
                   </div>
                 </div>
               ))}
