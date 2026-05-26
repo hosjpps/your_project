@@ -25,3 +25,6 @@ dist-ssr
 
 # Claude Code
 .claude/
+
+# Production build archive
+svoy-proekt-build.zip
