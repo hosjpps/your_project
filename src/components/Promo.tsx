@@ -86,7 +86,7 @@ export function Promo() {
             {/* Man photo — rounded frame */}
             <div className="relative z-10 w-72 h-[24rem] xl:w-80 xl:h-[26rem] rounded-[1.75rem] overflow-hidden border-4 border-white/30 shadow-2xl">
               <img
-                src="/мужик.jpeg"
+                src="/specialist.jpeg"
                 alt="Специалист «Свой Проект»"
                 className="w-full h-full object-cover"
               />

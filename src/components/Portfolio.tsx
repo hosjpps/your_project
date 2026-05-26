@@ -12,32 +12,32 @@ const staticItems: { title: string; description?: string; image: string }[] = [
   {
     title: 'Витражное остекление коттеджа',
     description: 'Алюминиевый профиль, г. Выкса',
-    image: '/Витражное остекление.jpeg',
+    image: '/vitrazh.jpeg',
   },
   {
     title: 'Панорамные окна',
     description: 'Загородный дом, профиль REHAU',
-    image: '/ПВХ2.jpeg',
+    image: '/pvh2.jpeg',
   },
   {
     title: 'Тёплое остекление балкона',
     description: 'Квартира на Красных Зорях',
-    image: '/балконы1.jpeg',
+    image: '/balkon1.jpeg',
   },
   {
     title: 'Секционные ворота',
     description: 'Гараж в частном секторе',
-    image: '/ворота1.jpeg',
+    image: '/vorota1.jpeg',
   },
   {
     title: 'Входная группа',
     description: 'Офисное здание, алюминий',
-    image: '/Входная группа.jpeg',
+    image: '/vhodnaya-gruppa.jpeg',
   },
   {
     title: 'Фасадное остекление',
     description: 'Коммерческий объект',
-    image: '/Фасадное остекление.jpeg',
+    image: '/fasadnoe.jpeg',
   },
 ]
 

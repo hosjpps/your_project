@@ -1,4 +1,4 @@
-const NOTIFICATION_EMAIL = 'svoy.proekt@mail.ru'
+const WEB3FORMS_KEY = '62ddf639-66b5-4f64-a94c-7239838e3fba'
 
 interface LeadData {
   name: string
@@ -10,16 +10,16 @@ interface LeadData {
 
 export async function sendLeadEmail(data: LeadData): Promise<void> {
   try {
-    await fetch(`https://formsubmit.co/ajax/${NOTIFICATION_EMAIL}`, {
+    await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
       },
       body: JSON.stringify({
-        _subject: `Новая заявка с сайта${data.source ? ` — ${data.source}` : ''}`,
-        _template: 'table',
-        _captcha: 'false',
+        access_key: WEB3FORMS_KEY,
+        subject: `Новая заявка с сайта — ${data.source || 'Форма «Контакты»'}`,
+        from_name: 'Сайт «Свой Проект»',
         Имя: data.name,
         Телефон: data.phone,
         Email: data.email || '—',

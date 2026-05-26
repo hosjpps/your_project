@@ -76,7 +76,7 @@ export function Header() {
               className="flex flex-col leading-tight"
             >
               <img
-                src="/photo_2026-03-25 20.55.05-Photoroom.png"
+                src="/logo.png"
                 alt="Свой Проект — оконная компания в Выксе"
                 width={1024}
                 height={1024}
@@ -183,7 +183,7 @@ export function Header() {
           )}
         >
           <div className="flex items-center justify-between p-4 border-b border-gray-100">
-            <img src="/photo_2026-03-25 20.55.05-Photoroom.png" alt="Свой Проект" width={1024} height={1024} className="h-32 w-32 object-contain -my-10 [filter:brightness(0)_saturate(100%)_invert(13%)_sepia(75%)_saturate(2200%)_hue-rotate(215deg)_brightness(85%)_contrast(105%)]" />
+            <img src="/logo.png" alt="Свой Проект" width={1024} height={1024} className="h-32 w-32 object-contain -my-10 [filter:brightness(0)_saturate(100%)_invert(13%)_sepia(75%)_saturate(2200%)_hue-rotate(215deg)_brightness(85%)_contrast(105%)]" />
             <button
               onClick={() => setMobileOpen(false)}
               className="p-2 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"
