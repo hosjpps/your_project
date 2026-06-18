@@ -1,73 +1,62 @@
-# React + TypeScript + Vite
+# Свой Проект — лендинг оконной компании
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Одностраничный сайт оконной компании «Свой Проект» (Выкса) с формами заявок, отзывами, портфолио и админ-панелью на Supabase.
 
-Currently, two official plugins are available:
+## Возможности
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Адаптивный лендинг с секциями: услуги, преимущества, портфолио, этапы работы, акции, отзывы, партнёры и контакты
+- Модальные карточки услуг с детальным описанием (окна ПВХ, двери, балконы, ворота, алюминиевые конструкции)
+- Формы заявок на замер: заявка сохраняется в Supabase и дублируется уведомлением на почту через Web3Forms
+- Публикация отзывов посетителями с модерацией (статусы «на проверке / одобрен / отклонён»)
+- Закрытая админ-панель (`/admin`) с авторизацией через Supabase Auth: входящие заявки, управление отзывами и портфолио
+- SEO-разметка: метатеги, Open Graph, гео-теги и структурированные данные LocalBusiness
+- Баннер cookie и страницы политики конфиденциальности / обработки персональных данных
 
-## React Compiler
+## Стек
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19 + TypeScript, сборка на Vite
+- React Router для маршрутизации лендинга и админки
+- Tailwind CSS, иконки Lucide, анимации GSAP
+- Supabase (база данных + авторизация) в качестве бэкенда
+- Web3Forms для email-уведомлений о заявках
+- Деплой на Vercel
 
-## Expanding the ESLint configuration
+## Структура
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+  components/   секции лендинга и UI-компоненты
+  admin/        админ-панель (вход, заявки, отзывы, портфолио)
+  data/         контент: услуги, компания, преимущества, этапы, отзывы
+  lib/          клиент Supabase, отправка email, типы, утилиты
+  hooks/        useAuth, useInView, useScrollSpy
+scripts/        SQL для наполнения базы отзывами
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Модель данных
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Supabase-таблицы (см. `src/lib/types.ts`):
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- `reviews` — отзывы с рейтингом, локацией, статусом модерации и ответом администратора
+- `portfolio` — работы с заголовком, описанием, изображением и порядком вывода
+- `contact_submissions` — заявки с формы (имя, телефон, email, комментарий, признак прочтения)
+
+## Запуск
+
+```bash
+npm install
+npm run dev
+```
+
+Для работы форм и админки нужны переменные окружения Supabase:
+
+```
+VITE_SUPABASE_URL=...
+VITE_SUPABASE_ANON_KEY=...
+```
+
+Сборка production-версии:
+
+```bash
+npm run build
 ```
