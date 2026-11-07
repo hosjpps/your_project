@@ -4,7 +4,7 @@ export const company = {
   since: 2008,
   city: 'Выкса',
   region: 'Нижегородская область',
-  address: 'г. Выкса, ул. Красные Зори, 31',
+  address: 'г. Выкса, ул. Вавилина, 13',
   phones: [
     { number: '+7 (929) 050-55-58', raw: '+79290505558', primary: true },
     { number: '+7 (930) 717-78-77', raw: '+79307177877', primary: false },
@@ -13,8 +13,8 @@ export const company = {
   ],
   locations: [
     {
-      title: 'Красные Зори',
-      address: 'г. Выкса, ул. Красные Зори, 31',
+      title: 'Вавилина',
+      address: 'г. Выкса, ул. Вавилина, 13',
       phone: { number: '+7 (929) 050-55-58', raw: '+79290505558' },
       hours: [
         { label: 'Пн–Пт', value: '09:00 – 17:00' },
@@ -46,7 +46,7 @@ export const company = {
     yearsExperience: '15+',
   },
   yandexMapEmbed:
-    'https://yandex.ru/map-widget/v1/?ll=42.178827%2C55.316946&z=16&pt=42.178827%2C55.316946%2Cpm2rdm',
+    'https://yandex.ru/map-widget/v1/?ll=42.162020%2C55.326935&z=16&pt=42.162020%2C55.326935%2Cpm2rdm',
   yandexMapLink: 'https://yandex.ru/maps/org/svoy_proyekt/225964423964/',
   twoGisLink: 'https://2gis.ru/vyksa/firm/70000001040483371',
 } as const
