@@ -94,21 +94,23 @@ export function ServiceModal({ service, isOpen, onClose }: ServiceModalProps) {
     e.preventDefault()
     setSubmitting(true)
     setError('')
-    const { error: insertError } = await supabase.from('contact_submissions').insert({
+    const comment = service ? `Заявка из карточки: ${service.title}` : null
+    const sent = await sendLeadEmail({
       name: name.trim(),
       phone: phone.trim(),
-      comment: service ? `Заявка из карточки: ${service.title}` : null,
+      comment,
+      source: service ? `Карточка: ${service.title}` : 'Карточка услуги',
     })
-    if (insertError) {
+    if (!sent) {
       setError('Ошибка отправки. Позвоните нам напрямую.')
       setSubmitting(false)
       return
     }
-    sendLeadEmail({
+    // Email is the delivery channel; the DB copy is best-effort and must not block the lead.
+    void supabase.from('contact_submissions').insert({
       name: name.trim(),
       phone: phone.trim(),
-      comment: service ? `Заявка из карточки: ${service.title}` : null,
-      source: service ? `Карточка: ${service.title}` : 'Карточка услуги',
+      comment,
     })
     setSubmitted(true)
     setSubmitting(false)

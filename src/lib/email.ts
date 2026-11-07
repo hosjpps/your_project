@@ -8,9 +8,9 @@ interface LeadData {
   source?: string
 }
 
-export async function sendLeadEmail(data: LeadData): Promise<void> {
+export async function sendLeadEmail(data: LeadData): Promise<boolean> {
   try {
-    await fetch('https://api.web3forms.com/submit', {
+    const res = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -28,7 +28,10 @@ export async function sendLeadEmail(data: LeadData): Promise<void> {
         Время: new Date().toLocaleString('ru-RU', { timeZone: 'Europe/Moscow' }),
       }),
     })
+    const json = await res.json().catch(() => null)
+    return res.ok && json?.success === true
   } catch (err) {
     console.error('Email notification failed', err)
+    return false
   }
 }

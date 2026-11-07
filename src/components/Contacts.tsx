@@ -21,22 +21,23 @@ export function Contacts({ onPrivacyClick }: ContactsProps) {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     setError('')
-    const { error: insertError } = await supabase.from('contact_submissions').insert({
-      name: formData.name,
-      phone: formData.phone,
-      email: formData.email || null,
-      comment: formData.comment || null,
-    })
-    if (insertError) {
-      setError('Не удалось отправить заявку. Позвоните нам по телефону.')
-      return
-    }
-    sendLeadEmail({
+    const sent = await sendLeadEmail({
       name: formData.name,
       phone: formData.phone,
       email: formData.email,
       comment: formData.comment,
       source: 'Форма «Контакты»',
+    })
+    if (!sent) {
+      setError('Не удалось отправить заявку. Позвоните нам по телефону.')
+      return
+    }
+    // Email is the delivery channel; the DB copy is best-effort and must not block the lead.
+    void supabase.from('contact_submissions').insert({
+      name: formData.name,
+      phone: formData.phone,
+      email: formData.email || null,
+      comment: formData.comment || null,
     })
     setSubmitted(true)
   }
